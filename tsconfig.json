@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "es2022",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "moduleResolution": "node",
     "baseUrl": "src",
     "outDir": "./dist",
