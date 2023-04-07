@@ -17,8 +17,14 @@ async function insetUserIntoUsers(user: User):
     await userRepositories.insetUserIntoUsers({ name: user.name, email: user.email, password: hashPassword });
 }
 
+async function deleteUserById(id: number): Promise<void | string> {
+    const { rowCount } = await userRepositories.deleteUserById(id);
+    if (rowCount === 0) throw new Error(`Usuário não encontrado`);
 
+    await userRepositories.deleteUserById(id);
+}
 
 export default {
-    insetUserIntoUsers
+    insetUserIntoUsers, deleteUserById
 };
+

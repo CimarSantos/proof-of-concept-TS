@@ -30,4 +30,18 @@ async function showUsers(req: Request, res: Response) {
     }
 }
 
-export default { signUp, showUsers };
+async function deleteUserById(req: Request, res: Response) {
+    const id = req.params.id;
+
+    try {
+        await userServices.deleteUserById(Number(id));
+        return res.status(200).send("Usuário deletado do banco de dados");
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return res.status(404).send(error.message);
+        }
+    }
+}
+
+
+export default { signUp, showUsers, deleteUserById };

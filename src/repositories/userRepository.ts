@@ -19,6 +19,12 @@ export async function getUsersFromUsers() {
     )
 }
 
+export async function findUserById(id: number) {
+    return connectionDb.query(
+        `SELECT * FROM users WHERE id = $1;`, [id]
+    )
+}
+
 export async function deleteUserById(id: number) {
     return connectionDb.query(
         `DELETE FROM users WHERE id = $1;`, [id]
