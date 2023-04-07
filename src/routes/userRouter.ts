@@ -6,5 +6,6 @@ import { userSchema } from "schemas/userSchema.ts";
 const userRouter = Router();
 
 userRouter.use("/signup", validateSchema(userSchema), userController.signUp);
+userRouter.use("/get", userController.showUsers);
 
 export default userRouter;
