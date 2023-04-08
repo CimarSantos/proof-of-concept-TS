@@ -11,9 +11,9 @@ async function signUp(req: Request, res: Response) {
         return res.sendStatus(201);
     } catch (error: unknown) {
         if (error instanceof Error) {
-            return res.status(500).send(error.message);
+            return res.status(422).send(error.message);
         }
-        return res.status(400).send("Ocorreu um erro, verifique os dados inseridos");
+        return res.status(400).send("Este email já está cadastrado. Tente outro.");
     }
 }
 

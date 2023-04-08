@@ -15,7 +15,7 @@ export async function findUserByEmail(email: string) {
 
 export async function getUsersFromUsers() {
     return connectionDb.query(
-        `SELECT * FROM users;`
+        `SELECT * FROM users ORDER BY id ASC;`
     )
 }
 

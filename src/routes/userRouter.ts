@@ -5,9 +5,9 @@ import { userSchema } from "schemas/userSchema.ts";
 
 const userRouter = Router();
 
-userRouter.use("/signup", validateSchema(userSchema), userController.signUp);
-userRouter.use("/get", userController.showUsers);
-userRouter.use("/update/:id", userController.updateEmailById);
-userRouter.use("/delete/:id", userController.deleteUserById);
+userRouter.post("/signup", validateSchema(userSchema), userController.signUp);
+userRouter.get("/get", userController.showUsers);
+userRouter.patch("/update/:id", userController.updateEmailById);
+userRouter.delete("/delete/:id", userController.deleteUserById);
 
 export default userRouter;
