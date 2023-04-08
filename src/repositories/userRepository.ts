@@ -25,6 +25,12 @@ export async function findUserById(id: number) {
     )
 }
 
+export async function updateEmailById(id: number, email: string) {
+    return connectionDb.query(
+        `UPDATE users SET email = $1 WHERE id = $2;`, [email, id]
+    )
+}
+
 export async function deleteUserById(id: number) {
     return connectionDb.query(
         `DELETE FROM users WHERE id = $1;`, [id]

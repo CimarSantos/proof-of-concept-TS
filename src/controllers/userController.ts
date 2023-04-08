@@ -30,6 +30,21 @@ async function showUsers(req: Request, res: Response) {
     }
 }
 
+async function updateEmailById(req: Request, res: Response) {
+    const id = req.params.id;
+    const { email } = req.body;
+
+    try {
+        await userServices.updateEmailById(Number(id), email);
+
+        return res.status(200).send("Email atualizado com sucesso!");
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return res.status(404).send(error.message);
+        }
+    }
+}
+
 async function deleteUserById(req: Request, res: Response) {
     const id = req.params.id;
 
@@ -44,4 +59,4 @@ async function deleteUserById(req: Request, res: Response) {
 }
 
 
-export default { signUp, showUsers, deleteUserById };
+export default { signUp, showUsers, updateEmailById, deleteUserById };
